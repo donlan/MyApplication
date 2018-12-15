@@ -49,7 +49,7 @@ class PlayerPagenationView : View {
         normalItemWidth = ViewUtils.dp2px(6f, context.resources)
         normalItemHeight = ViewUtils.dp2px(10f, context.resources)
         radius = ViewUtils.dp2px(2f, context.resources)
-        setPagerSize(5)
+        setPagerSize(6)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -87,7 +87,6 @@ class PlayerPagenationView : View {
                 items[i].scale = 0f
                 items[i].alpha = 0.5f
             }
-
             for (i in 2..rightIndex) {
                 items[i].scale = 1f
                 items[i].alpha = if (i == itemIndex) 1f else 0.5f
@@ -100,10 +99,6 @@ class PlayerPagenationView : View {
                 items[i].alpha = 0f
                 items[i].scale = 0f
             }
-            for (i in 0..6) {
-                items[i].fraction = 1f
-            }
-
         } else {
             itemIndex = 4
             for (i in itemIndex downTo 0) {
@@ -115,17 +110,29 @@ class PlayerPagenationView : View {
                 items[i].alpha = 0f
                 items[i].scale = getScale(scaleArray[5 + i - itemIndex - 1])
             }
-            for (i in r+1  until items.size) {
+            for (i in r + 1 until items.size) {
                 items[i].alpha = 0f
                 items[i].scale = 0f
             }
+            Log.e("tag", "${currentIndex},${r},${rightIndex},${endIndex}")
+        }
+        if ((isPlus && currentIndex > 2) || (!isPlus && currentIndex >= 2))
             for (i in 0..6) {
                 items[i].fraction = curScaleFrac
             }
-            Log.e("tag", "${currentIndex},${r},${rightIndex},${endIndex}")
-        }
         items[itemIndex].alpha = 1f
+        checkNoSee(itemIndex)
+    }
 
+    private fun checkNoSee(itemIndex: Int) {
+        var start = itemIndex - currentIndex
+        var end = itemIndex + (size - currentIndex)
+        for(i in 0 until start){
+            items[i].scale = 0f
+        }
+        for(i in end until items.size){
+            items[i].scale = 0f
+        }
     }
 
     private fun getScale(scale: Float): Float {
@@ -135,7 +142,7 @@ class PlayerPagenationView : View {
 
     private var curScaleFrac = 1f
     fun updateIndex(index: Int) {
-        if (index < 0 || index >= size  || currentIndex == index) {
+        if (index < 0 || index >= size || currentIndex == index) {
             return
         }
         isPlus = index > currentIndex
