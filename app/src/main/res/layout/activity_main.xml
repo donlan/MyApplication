@@ -13,7 +13,7 @@
 			android:layout_height="100dp"
 			android:background="#222">
 		
-		<com.sundayfun.daycam.story.view.PlayerPagenationView
+		<com.sundayfun.daycam.story.view.PlayerPaginationView
 				android:layout_gravity="center"
 				android:id="@+id/pagenation"
 				android:layout_width="wrap_content"
@@ -27,6 +27,19 @@
 			<!---->
 		<!--</android.support.v7.widget.RecyclerView>-->
 		
+	</FrameLayout>
+
+	<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:background="#222">
+
+		<com.example.dooze.myapplication.PlayerPagenationView
+				android:layout_gravity="center"
+				android:id="@+id/pagenation1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
 	</FrameLayout>
 	
 	<EditText

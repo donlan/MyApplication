@@ -1,4 +1,13 @@
-package com.sundayfun.daycam.story.view
+package com.example.dooze.myapplication
+
+/**
+ * @author 梁桂栋
+ * @date 2018/12/16  21:11.
+ * e-mail 760625325@qq.com
+ * GitHub: https://github.com/donlan
+ * description: com.example.dooze.myapplication
+ * @version 1.0
+ */
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -9,7 +18,6 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import com.example.dooze.myapplication.ViewUtils
 
 /**
  * @author: dooze
